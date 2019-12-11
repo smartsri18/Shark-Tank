@@ -4,10 +4,9 @@ function Result(){
   var season = $('#season').val();
   var episode = $('#episode').val();
   var gender = $('#gender').val();
-
-  console.log(investors);
-  console.log(investors_amt);
-  console.log(season);
-  console.log(episode);
-  console.log(gender);
+  localStorage.setItem("investors", investors)
+  localStorage.setItem("investors_amt", investors_amt)
+  localStorage.setItem("season", season)
+  localStorage.setItem("episode", episode)
+  localStorage.setItem("gender", gender)
 }

@@ -1,8 +1,8 @@
 import json
 from st_app1.models import Company, Product
 
-# season2
-JSON_PATH = "json\\season1.json"
+# season2, season3, season4, season5, season6
+JSON_PATH = "json\\season6.json"
 
 
 with open(JSON_PATH, encoding="utf-8") as jsonfile:

@@ -37,7 +37,7 @@ class Product(models.Model):
     location = models.CharField(max_length=100)
     status = models.CharField(max_length=30)
     investors = models.CharField(max_length=255)
-    company_name = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='company', null=True)
+    company_name = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='product', null=True)
     link = models.CharField(max_length=255)
 
     def __str__(self):

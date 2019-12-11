@@ -3,13 +3,13 @@ import json
 
 from st_app1.models import Season, Episode, Company
 
-# # Seeding season from range to 0-7
-# for item in range(1,8):
-#     Season.objects.create(season_number=item)
-#
-# # Seeding episode from range 1 to 30
-# for item in range(1,31):
-#     Episode.objects.create(episode_number=item)
+# Seeding season from range to 0-7
+for item in range(1,8):
+    Season.objects.create(season_number=item)
+
+# Seeding episode from range 1 to 30
+for item in range(1,31):
+    Episode.objects.create(episode_number=item)
 
 CSV_PATH = 'data.csv'      # Csv file path
 
