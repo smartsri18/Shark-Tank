@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from st_app1 import views
+from django.views.generic import TemplateView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('view/',views.SearchView.as_view()),
+    path('view/',views.get_or_post,name="Company_detail"),
+    path('index/',TemplateView.as_view(template_name='index.html'))
 ]
