@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="investors_lb">Investors</label>
+              <input type="text" class="form-control" id="investors" placeholder="Investors">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="investors_amt_lb">Investors Amount</label>
+              <input type="text" class="form-control" id="investors_amt" placeholder="Investors Amount">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="season_lb">Season</label>
+              <select id="season" class="form-control">
+                <option selected>Choose...</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="season_lb">Episode</label>
+              <select id="episode" class="form-control">
+                <option>1</option> <option>2</option> <option>3</option> <option>4</option> <option>5</option> <option>6</option>
+                <option>7</option> <option>8</option> <option>9</option> <option>10</option> <option>11</option> <option>12</option>
+                <option>13</option> <option>14</option> <option>15</option> <option>16</option> <option>17</option> <option>18</option>
+                <option>19</option> <option>20</option> <option>21</option> <option>22</option> <option>23</option> <option>24</option>
+                <option>25</option> <option>26</option> <option>27</option> <option>28</option> <option>29</option> <option>30</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="gender_lb">Gender</label>
+            <select id="gender" class="form-control">
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="Result()">Result</button>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
+  <script src="{%static 'js/myscript.js'%}" charset="utf-8"></script>
+  <!-- <script>
+    $( document ).ready(function() {
+      function Result(){
+        var investors = $('#investors').val();
+        var investors_amt = $('#investors_amt').val();
+        var season = $('#season').val();
+        var episode = $('#episode').val();
+        var gender = $('#gender').val();
+
+        console.log(investors);
+        console.log(investors_amt);
+        console.log(season);
+        console.log(episode);
+        console.log(gender);
+      }
+    });
+  </script> -->
+</html>
