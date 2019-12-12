@@ -100,14 +100,7 @@
     var episode = $('#episode').val();
     var gender = $('#gender').val();
 
-    console.log(investors);
-    console.log(investors_amt);
-    console.log(season);
-    console.log(episode);
-    console.log(gender);
-
     var url = "http://127.0.0.1:8000/view/"
-    console.log(url);
     var data = {'investors':investors,'investors_amt':investors_amt,'season':season,'episode':episode, 'gender':gender}
     jQuery.ajax({
           headers : {'Authorization': "Basic c3JpOmRqYW5nby1hZG1pbg==",
@@ -120,7 +113,6 @@
               console.log(result);
               $('#cv_table > tbody').empty();
               $('#cv_detail').css("display","block")
-              console.log(result.company_det.length);
               var i;
               var dum = ""
               for(i=0; i<result.company_det.length; i++){

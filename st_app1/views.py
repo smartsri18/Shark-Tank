@@ -27,13 +27,18 @@ def get_or_post(request):
     if gender:
         kwargs['gender'] = gender
 
+    company_list = []
     if investors:
-        product_det = Product.objects.filter(investors=investors).values('company_name','product_name','company_name_id')
-        print(product_det)
-        kwargs['id'] = product_det[0]['company_name_id']
+        product_det = Product.objects.all().filter(investors=investors).values('company_name')
+        for item in product_det:
+            company_list.append(item['company_name'])
+        # Grabing the investors from product table
+        company_det = Company.objects.all().filter(**kwargs,pk__in=company_list)
+    else:
+        # If investors field is not used for filter
+        company_det = Company.objects.all().filter(**kwargs)
+
 
     # GETTING COMPANY DETAILS
-    company_det = Company.objects.all().filter(**kwargs)
     serializer = CompanySerializer(company_det, many=True)
-    print(serializer)
     return Response({"company_det": serializer.data})
