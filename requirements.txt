@@ -9,7 +9,7 @@ css-html-js-minify==2.5.5
 csvkit==1.0.3
 dbfread==2.0.7
 dicttoxml==1.7.4
-Django==2.1.5
+Django==2.1.15
 django-cors-headers==3.2.0
 djangorestframework==3.10.3
 djangorestframework-jwt==1.11.0
