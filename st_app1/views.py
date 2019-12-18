@@ -34,7 +34,7 @@ def get_or_post(request):
         for item in product_det:
             company_list.append(item['company_name'])
         # Grabing the investors from product table
-        company_det = Company.objects.all().filter(**kwargs,pk__in=company_list)
+        company_det = Company.objects.all().filter(**kwargs,pk__in=company_list,deal="Yes")
     else:
         # If investors field is not used for filter
         company_det = Company.objects.all().filter(**kwargs,deal="Yes")
