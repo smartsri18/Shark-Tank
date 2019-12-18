@@ -33,11 +33,13 @@ class Company(models.Model):
 
 # Product model.
 class Product(models.Model):
+    season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name='prod_season', null=True)
+    episode = models.ForeignKey(Episode, on_delete=models.CASCADE, related_name='prod_episode', null=True)
     product_name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     status = models.CharField(max_length=30)
     investors = models.CharField(max_length=255)
-    company_name = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='product', null=True)
+    company_name = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='product', null=True, blank=True)
     link = models.CharField(max_length=255)
 
     def __str__(self):

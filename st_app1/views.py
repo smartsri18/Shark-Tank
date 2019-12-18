@@ -8,6 +8,7 @@ from rest_framework.decorators import api_view
 from .models import Company, Product
 from .serializers import CompanySerializer, ProductSerializer
 
+# View for Investors invested in the product : Company name
 @api_view(['GET', 'POST'])
 def get_or_post(request):
     season = request.data.get('season')
@@ -36,9 +37,11 @@ def get_or_post(request):
         company_det = Company.objects.all().filter(**kwargs,pk__in=company_list)
     else:
         # If investors field is not used for filter
-        company_det = Company.objects.all().filter(**kwargs)
+        company_det = Company.objects.all().filter(**kwargs,deal="Yes")
 
 
     # GETTING COMPANY DETAILS
     serializer = CompanySerializer(company_det, many=True)
     return Response({"company_det": serializer.data})
+
+# Getting product for participate each season
