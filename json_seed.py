@@ -39,11 +39,11 @@ for key,val in reader.items():
         # print(company_dict)
         if company_dict.exists():
             company_id = company_dict[0]['id']
-            Product.objects.create(season = Season.objects.get(season_number=season), episode = Episode.objects.get(episode_number=episode), product_name=product_name,location=location,
+            Product.objects.create(showlist=Episode.objects.get(season =season, episode_number=episode), product_name=product_name,location=location,
                                     status = status, investors=investors,
                                     company_name = Company.objects.get(id=company_id), link=link)
         else:
             # company_id = None
-            Product.objects.create(season = Season.objects.get(season_number=season), episode = Episode.objects.get(episode_number=episode), product_name=product_name,location=location,
+            Product.objects.create(showlist=Episode.objects.get(season =season, episode_number=episode), product_name=product_name,location=location,
                                     status = status, investors=investors,
                                     company_name = None, link=link)

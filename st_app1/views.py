@@ -5,7 +5,7 @@ from rest_framework import permissions
 from rest_framework.decorators import api_view
 
 
-from .models import Company, Product
+from .models import Company, Product, Episode
 from .serializers import CompanySerializer, ProductSerializer
 
 # View for Investors invested in the product : Company name
@@ -19,12 +19,14 @@ def get_or_post(request):
 
     # FILTER OPTIONS FOR AND AND OR LOGIC
     kwargs = {}
-    if season:
-        kwargs['season'] = season
+
     if episode:
-        kwargs['episode'] = episode
+        showlist = Episode.objects.get(season= season ,episode_number=episode)
+        kwargs['showlist'] = showlist
+
     if investors_amt:
         kwargs['amount'] = investors_amt
+
     if gender:
         kwargs['gender'] = gender
 
@@ -34,14 +36,19 @@ def get_or_post(request):
         for item in product_det:
             company_list.append(item['company_name'])
         # Grabing the investors from product table
-        company_det = Company.objects.all().filter(**kwargs,pk__in=company_list,deal="Yes")
+        if season:
+            # Fetching investors from specific season
+            company_det = Company.objects.all().filter(**kwargs,pk__in=company_list,showlist__season=season,deal="Yes")
+        else:
+            # Fetching ivestors from all season
+            company_det = Company.objects.all().filter(**kwargs,pk__in=company_list,deal="Yes")
     else:
         # If investors field is not used for filter
-        company_det = Company.objects.all().filter(**kwargs,deal="Yes")
-
+        if season and not episode:
+            company_det = Company.objects.all().filter(showlist__season=season,deal="Yes")
+        else:
+            company_det = Company.objects.all().filter(**kwargs, deal="Yes")
 
     # GETTING COMPANY DETAILS
     serializer = CompanySerializer(company_det, many=True)
     return Response({"company_det": serializer.data})
-
-# Getting product for participate each season

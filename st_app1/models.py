@@ -10,16 +10,16 @@ class Season(models.Model):
 
 # Episode model.
 class Episode(models.Model):
+    season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name='etb_season', null=True)
     episode_number = models.IntegerField()
 
     def __str__(self):
-        name = "Episode "
-        return name+str(self.episode_number)
+        l_name = " Episode "
+        return str(self.season)+l_name+str(self.episode_number)
 
 # Company model.
 class Company(models.Model):
-    season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name='season', null=True)
-    episode = models.ForeignKey(Episode, on_delete=models.CASCADE, related_name='episode', null=True)
+    showlist = models.ForeignKey(Episode, on_delete=models.CASCADE, related_name='showlist', null=True)
     company_name = models.CharField(max_length=500)
     deal = models.CharField(max_length=10)
     industry = models.CharField(max_length=255)
@@ -33,8 +33,7 @@ class Company(models.Model):
 
 # Product model.
 class Product(models.Model):
-    season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name='prod_season', null=True)
-    episode = models.ForeignKey(Episode, on_delete=models.CASCADE, related_name='prod_episode', null=True)
+    showlist = models.ForeignKey(Episode, on_delete=models.CASCADE, related_name='prod_showlist', null=True)
     product_name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     status = models.CharField(max_length=30)
